@@ -1,7 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:orientation="vertical"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#BBDEFB">
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-10dp"
+        android:padding="16dp"
+        android:text="Calcular pago de nómina"
+        android:textAlignment="center"
+        android:textColor="#1F1F1F"
+        android:textSize="24sp" />
+
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/heybanco"
+        android:layout_below="@id/titleTextView"
+        android:layout_marginTop="32dp"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitCenter"/>
+
+    <EditText
+        android:id="@+id/nameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingrese su nombre"
+        android:layout_below="@id/logoImageView"
+        android:layout_marginTop="24dp"
+        android:padding="16dp"
+        android:textColor="#000000"
+        android:textColorHint="#888888"/>
+
+    <Button
+        android:id="@+id/enterButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Entrar"
+        android:textColor="#FFFFFF"
+        android:background="#007BFF"
+        android:layout_below="@id/nameEditText"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
+
+    <Button
+        android:id="@+id/exitButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Salir"
+        android:textColor="#FFFFFF"
+        android:background="#FF4C4C"
+        android:layout_below="@id/enterButton"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
+</RelativeLayout>

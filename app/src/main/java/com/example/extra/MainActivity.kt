@@ -1,47 +1,52 @@
 package com.example.extra
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.extra.ui.theme.EXTRATheme
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.Button
+import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            EXTRATheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+        setContentView(R.layout.activity_main)
+
+        val nameEditText = findViewById<EditText>(R.id.nameEditText)
+        val enterButton = findViewById<Button>(R.id.enterButton)
+        val exitButton = findViewById<Button>(R.id.exitButton)
+
+        nameEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val filtered = s.toString().filter { it.isLetter() || it.isWhitespace() }
+                if (s.toString() != filtered) {
+                    nameEditText.setText(filtered)
+                    nameEditText.setSelection(filtered.length)
                 }
             }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
+
+        enterButton.setOnClickListener {
+            val name = nameEditText.text.toString().trim()
+
+            if (name.isNotEmpty()) {
+                val intent = Intent(this, ReciboNominaActivity::class.java).apply {
+                    putExtra("EXTRA_NAME", name)
+                }
+                startActivity(intent)
+            } else {
+                nameEditText.error = "Por favor, ingrese su nombre"
+            }
         }
-    }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    EXTRATheme {
-        Greeting("Android")
+        exitButton.setOnClickListener {
+            finish()
+        }
     }
 }

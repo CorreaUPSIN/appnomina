@@ -1,7 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:orientation="vertical"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#BBDEFB">
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cálculo de Pago de Nómina"
+        android:textSize="24sp"
+        android:textColor="#1F1F1F"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"/>
+
+    <EditText
+        android:id="@+id/numReciboEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Número de Recibo"
+        android:layout_below="@id/titleTextView"
+        android:layout_marginTop="32dp"
+        android:padding="16dp"
+        android:textColor="#000000"
+        android:textColorHint="#888888"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/nombreNominaTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="20sp"
+        android:textColor="#1F1F1F"
+        android:layout_below="@id/numReciboEditText"
+        android:layout_marginTop="16dp"
+        android:padding="16dp"/>
+
+    <TextView
+        android:id="@+id/puestoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Puesto"
+        android:textSize="20sp"
+        android:textColor="#1F1F1F"
+        android:layout_below="@id/nombreNominaTextView"
+        android:layout_marginTop="24dp"
+        android:layout_centerHorizontal="true"/>
+
+    <RadioGroup
+        android:id="@+id/puestoRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/puestoTextView"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/auxiliarRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Auxiliar"/>
+
+        <RadioButton
+            android:id="@+id/albanilRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Albañil"/>
+
+        <RadioButton
+            android:id="@+id/ingObraRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ing. de Obra"/>
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/horasTrabEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Horas Trabajadas"
+        android:layout_below="@id/puestoRadioGroup"
+        android:layout_marginTop="16dp"
+        android:padding="16dp"
+        android:textColor="#000000"
+        android:textColorHint="#888888"
+        android:inputType="numberDecimal"/>
+
+    <EditText
+        android:id="@+id/horasExtraTrabEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Horas Extras"
+        android:layout_below="@id/horasTrabEditText"
+        android:layout_marginTop="16dp"
+        android:padding="16dp"
+        android:textColor="#000000"
+        android:textColorHint="#888888"
+        android:inputType="numberDecimal"/>
+
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/horasExtraTrabEditText"
+        android:layout_marginTop="24dp"
+        android:textColor="#1F1F1F"
+        android:textSize="18sp"
+        android:padding="16dp"
+        android:text="Resultados:\n - Subtotal\n - Impuestos\n - Total"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/resultTextView"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:id="@+id/calculateButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Calcular"
+            android:textColor="#FFFFFF"
+            android:background="#007BFF"
+            android:layout_marginEnd="8dp"/>
+
+        <Button
+            android:id="@+id/clearButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Limpiar"
+            android:textColor="#FFFFFF"
+            android:background="#28A745"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/exitButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#FF4C4C"
+        android:text="Salir"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="16dp"/>
+</RelativeLayout>
